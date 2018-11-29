@@ -3,10 +3,10 @@ pragma solidity ^0.4.23;
 contract SupplyChain {
 
   /* set owner */
-  address owner;
+    address owner;
 
   /* Add a variable called skuCount to track the most recent sku # */
-  uint skuCount;
+    uint skuCount;
 
   /* Add a line that creates a public mapping that maps the SKU (a number) to an Item.
      Call this mappings items
@@ -45,9 +45,9 @@ contract SupplyChain {
 
 /* Create a modifer that checks if the msg.sender is the owner of the contract */
 
-  modifier verifyCaller (address _address) { require (msg.sender == _address); _;}
+  modifier verifyCaller (address _address) {require (msg.sender == _address); _;}
 
-  modifier paidEnough(uint _price) { require(msg.value >= _price); _;}
+  modifier paidEnough(uint _price) {require(msg.value >= _price); _;}
   modifier checkValue(uint _sku) {
     //refund them after pay for item (why it is before, _ checks for logic before func)
     _;
@@ -59,10 +59,10 @@ contract SupplyChain {
   /* For each of the following modifiers, use what you learned about modifiers
    to give them functionality. For example, the forSale modifier should require
    that the item with the given sku has the state ForSale. */
-  modifier forSale(uint _sku) {require( items[_sku].state == State.ForSale); _;}
-  modifier sold(uint _sku) {require( items[_sku].state == State.Sold); _;}
-  modifier shipped(uint _sku) {require( items[_sku].state == State.Shipped); _;}
-  modifier received(uint _sku) {require( items[_sku].state == State.Received); _;}
+  modifier forSale(uint _sku) {require(items[_sku].state == State.ForSale); _;}
+  modifier sold(uint _sku) {require(items[_sku].state == State.Sold); _;}
+  modifier shipped(uint _sku) {require(items[_sku].state == State.Shipped); _;}
+  modifier received(uint _sku) {require(items[_sku].state == State.Received); _;}
 
 
   constructor() public {
